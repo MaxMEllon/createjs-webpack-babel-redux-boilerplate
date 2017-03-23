@@ -4,7 +4,7 @@ import { sample } from './actions';
 
 import store from './store';
 
-window.onload  = () => {
+window.onload = () => {
   const canvas = document.getElementById('main');
   const stage = new createjs.Stage(canvas);
   const circle = new createjs.Shape();
@@ -15,7 +15,7 @@ window.onload  = () => {
 
   circle.addEventListener('click', () => store.dispatch(sample()));
 
-  const unsubscribe = store.subscribe(() => {
+  store.subscribe(() => {
     const state = store.getState();
     circle.x = state.sample.x;
     circle.y = state.sample.y;
@@ -24,5 +24,5 @@ window.onload  = () => {
 
   stage.addChild(circle);
   stage.update();
-  console.log('OK');
-}
+};
+

@@ -5,13 +5,15 @@ import {
   afterSample,
 } from '../actions';
 
-const x = undefined;
+const $$$ = undefined;
 
 function* sampleSaga() {
-  while (typeof x === 'undefined') {
+  while (typeof $$$ === 'undefined') {
     yield take(`${sample}`);
     yield delay(100);
-    yield put(afterSample({sample: {x: Math.random() * 100 + 50, y: Math.random() * 100 + 50} }));
+    const x = (Math.random() * 100) + 50;
+    const y = (Math.random() * 100) + 50;
+    yield put(afterSample({ sample: { x, y } }));
   }
 }
 
